@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html manifest="offlineCache702.manifest">
+<head>
+    <title>HEX - PS4 Jailbreak 7.02</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #bf360c;
+            --accent-color: #e64a19;
+            --text-color: #ffffff;
+            --success-color: #F44336;
+            --fail-color: #F44336;
+            --card-bg: #970000;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .bg {
+          position: fixed;
+          top: 50;
+          left: 50;
+          width: 100%;
+          height: 100%;
+          background-image: url("bg.jpg"); /* اسم الصورة */
+          background-repeat: no-repeat;
+          background-position: top left;   /* مهم عشان اللوجو */
+          background-size: contain;        /* يمنع القص */
+          background-color: #000;          /* يكمّل الفراغ */
+          z-index: -1;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .titlehead {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-container {
+            width: 80%;
+            margin: 30px auto;
+            background: var(--progress-bg);
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--progress-bar), #8BC34A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            min-height: 50px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .hidden-elements {
+            opacity: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-container {
+                width: 90%;
+            }
+
+            .titlehead {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body onload="go();" class="bg">
+    <div class="container">
+        <header>
+            <h1 id="progress" class="titlehead">Loading.. Please Wait !!</h1>
+        </header>
+
+        <div class="progress-container">
+            <div id="myBar" class="progress-bar">0%</div>
+        </div>
+
+        <main>
+            <div class="button-grid" id="load">
+                <!-- يتم تعبئته تلقائيًا -->
+            </div>
+        </main>
+    </div>
+
+    <!-- عناصر خفية كما في الكود القديم -->
+    <input type="hidden" id="pldooe" value=""/>
+    <input type="hidden" id="pldooe_full" value=""/>
+    <button class="hidden-elements" id="input1" onfocus="handle2()"></button>
+    <button class="hidden-elements" id="input2"></button>
+    <button class="hidden-elements" id="input3" onfocus="handle2()"></button>
+    <select class="hidden-elements" id="select1">
+        <option value="value1">Value1</option>
+    </select>
+
+    <script>
+        // تحديث شريط التقدم
+        function updateProgress(percent) {
+            const progressBar = document.getElementById("myBar");
+            progressBar.style.width = percent + "%";
+            progressBar.textContent = percent + "%";
+        }
+
+        // دالة لتمثيل التحميل اليدوي زي القديم
+        var width = 0;
+        function frame1() {
+            var elem = document.getElementById("myBar");
+            var i = 0;
+            var id = setInterval(function() {
+                if (i < 10 && width < 100) {
+                    width++;
+                    updateProgress(width);
+                }
+                i++;
+            }, 10);
+        }
+
+        // وظائف التخزين المؤقت على PS4
+        window.applicationCache.ondownloading = function () {
+            document.getElementById("progress").textContent = "Page Caching Started!!";
+            localStorage.is702Cached = false;
+        };
+
+        window.applicationCache.onprogress = function (e) {
+            const percent = Math.round(100 * (e.loaded / e.total));
+            updateProgress(percent);
+        };
+
+        window.applicationCache.oncached = function () {
+            document.getElementById("progress").textContent = "Page Cached Successfully!!";
+            localStorage.is702Cached = true;
+            setTimeout(() => {
+                document.getElementById("progress").textContent = "Turn Off the Internet & Reopen the Page to Run the Exploit!!";
+            }, 1500);
+        };
+
+        // تحميل الأزرار الأساسية
+        function initButtons() {
+            const mainButtons = document.querySelector('#load');
+            const essentialButtons = [
+                { icon: '💣', text: 'Main Exploit', onclick: 'loadMainExploit()' },
+                { icon: '🚀', text: 'Fast Exploit', onclick: 'loadFastExploit()' },
+                { icon: '📂', text: 'App2USB', onclick: 'loadPayload("app2usb")' },
+                { icon: '❌', text: 'Disable Updates', onclick: 'loadPayload("disableupdates")' }
+            ];
+
+            essentialButtons.forEach(btn => {
+                mainButtons.innerHTML += `
+                    <a href="#" class="button" onclick="${btn.onclick}; return false">
+                        ${btn.icon} ${btn.text}
+                    </a>
+                `;
+            });
+        }
+
+        // دوال وهمية (تركب مكانها الفعلية)
+        function loadMainExploit() { console.log("Loading Main Exploit"); }
+        function loadFastExploit() { console.log("Loading Fast Exploit"); }
+        function loadPayload(name) { console.log("Payload:", name); }
+        function handle2() { console.log("Handle2"); }
+        function go() {
+            console.log("Go()");
+            initButtons();
+            frame1();
+        }
+    </script>
+
+    <!-- ملفات السكربتات مثل القديم -->
+    <script src="utils.js"></script>
+    <script src="int64.js"></script>
+    <script src="rop.js"></script>
+    <script src="payloads.js"></script>
+    <script src="userland.js"></script>
+    <script src="ps4.js"></script>
+</body>
+</html>
