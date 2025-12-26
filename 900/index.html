@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html manifest="offlineCache.manifest">
+<head>
+    <title>pes club - PS4 Jailbreak 9.00</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #3949ab;
+            --accent-color: #536dfe;
+            --text-color: #ffffff;
+            --success-color: #4CAF50;
+            --card-bg: rgba(26, 35, 126, 0.85);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("ps4.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .titlehead {
+            background: var(--card-bg);
+            border-radius: 10px;
+            color: var(--text-color);
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            min-height: 50px;
+            text-align: center;
+        }
+        
+        .button:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .button i {
+            margin-right: 8px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .advanced-section {
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        .toggle-advanced {
+            display: block;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-advanced:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .advanced-buttons {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .fan-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .fan-button {
+            border-radius: 8px 0 0 8px !important;
+            margin-right: 0 !important;
+        }
+        
+        .fan-select {
+            height: 100%;
+            border-radius: 0 8px 8px 0;
+            border: none;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0 10px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .titlehead {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg">
+    <div class="bg"></div>
+    
+    <div class="container">
+        <header>
+            <h1 id="progress" class="titlehead">Ebaid Store - PS4 Jailbreak 9.00</h1>
+        </header>
+        
+        <main>
+            <div class="section-title">Main Exploit</div>
+            <div class="button-grid">
+                <a href="#" class="button" onclick="goldhen(); return false">
+                    <i class="fas fa-rocket"></i> Exploit + GoldHEN V2b
+                </a>
+            </div>
+            
+            <div class="section-title">Essential Tools</div>
+            <div class="button-grid">
+                <a href="#" class="button" onclick="app2usb(); return false">
+                    <i class="fas fa-usb"></i> App2USB
+                </a>
+                <a href="#" class="button" onclick="appdumper(); return false">
+                    <i class="fas fa-download"></i> App Dumper
+                </a>
+                <a href="#" class="button" onclick="disableupdates(); return false">
+                    <i class="fas fa-ban"></i> Disable Updates
+                </a>
+                <a href="#" class="button" onclick="enableupdates(); return false">
+                    <i class="fas fa-check-circle"></i> Enable Updates
+                </a>
+                <div class="fan-control">
+                    <a href="#" class="button fan-button" onclick="fanthreshold(temp.value); return false">
+                        <i class="fas fa-fan"></i> Fan Control
+                    </a>
+                    <select id="temp" class="fan-select">
+                        <option value="70" selected>70°C</option>
+                        <option value="65">65°C</option>
+                        <option value="60">60°C</option>
+                        <option value="75">75°C</option>
+                    </select>
+                </div>
+                <a href="#" class="button" onclick="ftp(); return false">
+                    <i class="fas fa-network-wired"></i> FTP
+                </a>
+                <a href="#" class="button" onclick="backup(); return false">
+                    <i class="fas fa-save"></i> DB Backup
+                </a>
+                <a href="#" class="button" onclick="restore(); return false">
+                    <i class="fas fa-undo"></i> DB Restore
+                </a>
+            </div>
+            
+            <button class="toggle-advanced" onclick="toggleAdvanced()">
+                <i class="fas fa-cogs"></i> Show Advanced Options
+            </button>
+            
+            <div class="advanced-section">
+                <div class="advanced-buttons" id="advancedButtons">
+                    <div class="section-title">Advanced Tools</div>
+                    <div class="button-grid">
+                        <a href="#" class="button" onclick="rifrenamer(); return false">
+                            <i class="fas fa-tag"></i> RIF Renamer
+                        </a>
+                        <a href="#" class="button" onclick="moduledumper(); return false">
+                            <i class="fas fa-cube"></i> Module Dumper
+                        </a>
+                        <a href="#" class="button" onclick="kerneldumper(); return false">
+                            <i class="fas fa-microchip"></i> Kernel Dumper
+                        </a>
+                        <a href="#" class="button" onclick="kernelclock(); return false">
+                            <i class="fas fa-clock"></i> Kernel Clock
+                        </a>
+                        <a href="#" class="button" onclick="ps4debug(); return false">
+                            <i class="fas fa-bug"></i> PS4 Debug
+                        </a>
+                        <a href="#" class="button" onclick="webrte(); return false">
+                            <i class="fas fa-globe"></i> WebRTE
+                        </a>
+                        <a href="#" class="button" onclick="permanentuart(); return false">
+                            <i class="fas fa-terminal"></i> Permanent UART
+                        </a>
+                        <a href="#" class="button" onclick="exitidu(); return false">
+                            <i class="fas fa-sign-out-alt"></i> Exit IDU
+                        </a>
+                        <a href="#" class="button" onclick="todex(); return false">
+                            <i class="fas fa-exchange-alt"></i> To-DEX
+                        </a>
+                        <a href="#" class="button" onclick="disableaslr(); return false">
+                            <i class="fas fa-shield-alt"></i> Disable ASLR
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <input type="hidden" id="psip" value="localhost"/>
+    
+    <script>
+        // دالة لعرض/إخفاء الأزرار المتقدمة
+        function toggleAdvanced() {
+            var advancedSection = document.getElementById('advancedButtons');
+            var toggleBtn = document.querySelector('.toggle-advanced');
+            
+            if (advancedSection.style.display === 'none' || advancedSection.style.display === '') {
+                advancedSection.style.display = 'grid';
+                toggleBtn.innerHTML = '<i class="fas fa-times"></i> Hide Advanced Options';
+            } else {
+                advancedSection.style.display = 'none';
+                toggleBtn.innerHTML = '<i class="fas fa-cogs"></i> Show Advanced Options';
+            }
+        }
+        
+        function loadcomplete() {
+            document.getElementById("progress").innerHTML = sessionStorage.Queue + " Loaded Successfully !!";
+            sessionStorage.Queue = "";
+        }
+        
+        window.onload = function(e) {
+            if (sessionStorage.Queue == null) {
+                sessionStorage.Queue = "";
+            } else if (sessionStorage.Queue != "") {
+                executependingqueue(sessionStorage.Queue);
+            }
+            
+            // إخفاء الأزرار المتقدمة افتراضيًا
+            document.getElementById('advancedButtons').style.display = 'none';
+        };
+        
+        window.applicationCache.ondownloading = function() {
+            document.getElementById("progress").innerHTML = "Page Caching Started!!";
+        };
+        
+        window.applicationCache.onprogress = function(a) {
+            document.getElementById("progress").innerHTML = "Caching Status: " + (Math.round(100 * (a.loaded / a.total))) + "% Completed";
+        };
+        
+        window.applicationCache.oncached = function() {
+            document.getElementById("progress").innerHTML = "Page Cached Successfully!!";
+            setTimeout(function() {
+                document.getElementById("progress").innerHTML = "Turn Off the Internet & Reopen the Page to Run the Exploit!!";
+            }, 1500);
+        };
+    </script>
+    
+    <script src="int64.js"></script>
+    <script src="rop.js"></script>
+    <script src="kexploit.js"></script>
+    <script src="webkit.js"></script>
+    <script src="payloads.js"></script>
+</body>
+</html>
